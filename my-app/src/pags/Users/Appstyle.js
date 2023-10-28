@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import Background from '../../assets/bg image.svg'
+//import { Link } from "react-router-dom";  //igual o ancora mas funciona para Urls
 
 export const Container = styled.div`
     background: url("${Background}");// ${Background} importa o codigo js e as "" trandorma tudo em texto fazendo a imagem aparecer. Isso somente para backgrounds do style
+    
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -19,7 +21,7 @@ export const Containeritens = styled.div`
     display: flex;
     flex-direction: column ;
     backdrop-filter: blur(45px); //deixa mais fosco
-    height: 100vh;
+    min-height: 100vh; // Para caso a tela mude de tamanho mantera o minimo semquevbras bordar que quebra o fundo.
 `
 export const H1 = styled.h1`
     font-size: 34px;

@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import Background from '../../assets/bgimage.svg'
+// import { Link } from "react-router-dom"; //Link permite navegar entreas Urls
 
 export const Container = styled.div`
     background: url("${Background}");// ${Background} importa o codigo js e as "" trandorma tudo em texto fazendo a imagem aparecer. Isso somente para backgrounds do style
+    min-height: 100vh; // Para caso a tela mude de tamanho mantera o minimo semquevbras bordar que quebra o fundo.
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -20,13 +22,7 @@ export const Containeritens = styled.div`
     flex-direction: column ;
     height: 100vh;
 `
-export const H1 = styled.h1`
-    font-size: 34px;
-    font-weight: 700;
-    margin-bottom: 70px;
-    text-align: center;
 
-`
 export const P = styled.p`
 font-size: 18px;
 font-weight: 700;
@@ -50,28 +46,4 @@ outline: none;
 `
 export const Inputlabel = styled.label`
 padding-left: 9px;
-`
-export const Button = styled.button`
-width: 342px;
-height: 74px;
-border-radius: 14px;
-border: none ;
-font-size: 17px;
-font-weight: 700;
-margin-top:52px;
-line-height: 28px;
-letter-spacing: 0px;
-text-align: center;
-background-color:#000;
-color:#fff;
-display: flex;
-align-items:center;
-justify-content: center;
-gap:20px;
-&:hover{
-    opacity: 70%; //formato e 0 a 1
-}
-&:active{ // active = ao ser clicado
-    opacity: 50%;
-}
 `

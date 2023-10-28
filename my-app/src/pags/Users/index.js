@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react'
+import { useNavigate } from 'react-router-dom' // Permite navegar pelas Urls
 import { v4 } from 'uuid'
 import axios from 'axios'
 import Avatar from '../../assets/User Profile_Monochromatic 2.svg'
@@ -31,6 +32,10 @@ const Us = () => {
     const newusers = users.filter(user => user.id != userId) //filter roda cada item da lista e apaga se der true.
     setusers(newusers)
   }
+  const navegate  = useNavigate()
+  function SelectPag(){
+    navegate("/")
+  }
   return (
     <Container>
       <Imagen alt='imagen.png' src={Avatar} /> 
@@ -48,7 +53,7 @@ const Us = () => {
           </User>))
       }
       </ul>
-      <Button> <img alt='Arrow' src={Arrow} /> Voltar</Button>
+      <Button onClick = {SelectPag} > <img alt='Arrow' src={Arrow} /> Voltar</Button>
       </Containeritens>
     </Container>
   )
