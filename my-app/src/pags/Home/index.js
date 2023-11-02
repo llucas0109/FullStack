@@ -30,7 +30,7 @@ const App = () => {
     SelectPag()
   }
    function SelectPag(){
-    Navegate("/users")
+    Navegate("/users")  
    }
   return (
     <Container>
@@ -41,7 +41,7 @@ const App = () => {
       <Input ref={inputname} placeholder="Nome"/>
 
       <Inputlabel>Idade</Inputlabel>
-      <Input ref={inputage} placeholder='Idade'/> {/* ref serve para chamar o useRef() */}
+      <Input ref={inputage} placeholder='Idade'/> {/* ref serve para dizer a Refrencia Do 'useRef' */}
        {/*se em: onClick={addNewUser} addNewUser estver com () ex: addNewUser(). o js vai chamar sem que o botao tenha sido clicado na primeira vez. */}
       <Button  onClick = { addNewUser }> {/* to="/users" Muda a url ao ser clicado para "/users". */}
         Cadastrar <img alt='Arrow' src={Arrow} />
