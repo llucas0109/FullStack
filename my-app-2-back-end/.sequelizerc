@@ -1,7 +1,0 @@
-const { resolve } = require('path') // 'resolve' permite navegar entre as pastas nao importando em qual sistema operacional esteja o server.
-
-module.exports = { // module.exports, exporta.
-  config:resolve( __dirname, 'src', 'config', 'database.js' ),
-  "models-path":resolve( __dirname, 'src', 'App', 'Models' ),
-  "migrations-path":resolve( __dirname, 'src', 'database', 'migrations' )
-}

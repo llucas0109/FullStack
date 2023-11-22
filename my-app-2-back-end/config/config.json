@@ -1,0 +1,13 @@
+{
+  "dialect": "postgres",
+  "host": "localhost",
+  "username": "postgres",
+  "password": "9981",
+  "database": "conteiner",
+  "define": {
+    "timestamps": true,
+    "underscored": true,
+    "underscoredAll": true
+  }
+}
+
