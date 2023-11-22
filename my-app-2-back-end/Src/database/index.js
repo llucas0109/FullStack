@@ -3,24 +3,25 @@
 
 import Sequelize from 'sequelize';
 import User from '../App/Models/User.js';
+import conflog from '../../config/config.json' assert{type:'json'}
 
-//import dbconfig from '../Config/database.js';
-import conflog from '../Config/database.js';
-const models = [User];
+  //fetch('../../config/config.json').then((response) => console.log(response)) //.then(response => response.json()) Assim que os dados 
 
-class Database {
-  constructor() {
-    this.init();
+  const models = [User];
+
+  class Database {
+    constructor() {
+      this.init();
+    }
+  
+    init() {
+      this.connection = new Sequelize(conflog);
+      models.map((model) => model.init(this.connection));
+    }
   }
-
-  init() {
-    this.connection = new Sequelize(conflog);
-    models.map((model) => model.init(this.connection));
-  }
-}
-
-export default new Database();
-
+  
+  export default new Database();
+  // Comando criar migrate npx ssequelize db:migrate e para excluir fica npx sequelize db:migrate:undo or undo:all
 
 /*import { Sequelize } from "sequelize";
 

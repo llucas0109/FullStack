@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize';
-import conflog from '../Config/database.js';
+import conflog from '../../config/config.json' assert {type: 'json'} ;
 
 const connection = new Sequelize(conflog);
-
+console.log(conflog);
 
 try{
   connection.authenticate(); // Testando a conection
