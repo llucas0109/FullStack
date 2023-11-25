@@ -3,11 +3,9 @@
   "host": "localhost",
   "username": "postgres",
   "password": "9981",
-  "database": "conteiner",
+  "database": "fly",
   "define": {
     "timestamps": true,
-    "underscored": true,
-    "underscoredAll": true
+    "underscored": true
   }
 }
-

@@ -1,6 +1,5 @@
 
 // Arquivo: src/database/Database.js
-
 import Sequelize from 'sequelize';
 import User from '../App/Models/User.js';
 import conflog from '../../config/config.json' assert{type:'json'}
@@ -16,6 +15,7 @@ import conflog from '../../config/config.json' assert{type:'json'}
   
     init() {
       this.connection = new Sequelize(conflog);
+      console.log(this.connection);
       models.map((model) => model.init(this.connection));
     }
   }

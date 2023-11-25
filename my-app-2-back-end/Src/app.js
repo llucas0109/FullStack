@@ -2,10 +2,10 @@
 //import express from 'express';
 //import rota from './route.js';
 //import './database/index.js';
-
 import express from 'express';
-import rota from './route.js';
-import './database/index.js';
+import './database/index.js'; 
+import rota from './route.js'; 
+
 
 //import port from './index.js'; // Tem que por o 'js'
 class App{ 

@@ -1,19 +1,25 @@
 
 // O nome do arquivo deve ter a primeira letra maiuscula porque é uma classe.
 //import Sequelize, { Model } from 'sequelize' //Model é uma classe
-import Sequelize, { Model } from 'sequelize';
-
+import Sequelize from 'sequelize';
+import pkg from 'sequelize';
+const { Model } = pkg; // Model fica dentro de pkg que fica dentro de sequelize
+ //Model permite manipular os modelos
+// Existe o datatypes para determinar tipos de dados
+console.log('user')
 // Restante do seu código aqui
-
-class User extends Model { // Extends Model Permite que dentro da Classe User possamos usar Metodos Da clase Model
-  static init(sequelize){  // Leia o que tem la em  baixo
+ 
+class User extends Model { // Extends Model Faz com quee User tenha como usar os objetos de  Model.
+  static init(sequelize){  //  static init permite ser usado fora da class leia em baixo
     super.init({  // 'super.' Permite Erdar Da classe Model O metodo 'init' 
-      name:Sequelize.STRING,
+      name:Sequelize.STRING, //Sequelize.STRING, Sao juntos um tipo de dado.
       email:Sequelize.STRING,
-      password_hash:Sequelize.STRING,
+      password_hash:Sequelize.STRING, //Sequelize.STRING, Sao juntos um tipo de dado.
       admin:Sequelize.BOOLEAN,
     },{
-      sequelize, 
+      sequelize, // Faz a conecçao ao servidor
+      //modelName: 'user',
+      //freezeTableName: true,
     })
   }
 }
