@@ -4,8 +4,12 @@
 //import './database/index.js';
 import express from 'express';
 import './database/index.js'; 
+import path from 'path';
 import rota from './route.js'; 
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url); // Replicando funcionalidade do dirname para um modulo
+const __dirname = path.dirname(__filename);  // Replicando funcionalidade do dirname para um modulo
 
 //import port from './index.js'; // Tem que por o 'js'
 class App{ 
@@ -15,7 +19,8 @@ class App{
     this.route()
   } 
   middleware() {
-    this.app.use(express.json())   
+    this.app.use(express.json()) 
+   // this.app.use('/product-file', express.static(__dirname, '..', 'uploads',)) // Permite que ao acessar a rota ele possa ter acesso aos arquivos estaticos da aplicaçao E procure pelo arquivo .  
   }
   route(){
     this.app.use(rota) 

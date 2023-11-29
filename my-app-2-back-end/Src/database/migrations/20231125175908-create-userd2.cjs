@@ -1,5 +1,6 @@
 'use strict';
-
+  // Migrations so cria as tabelas.
+  // npx sequelize migration:create --name=create-products
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -18,9 +19,9 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
+        unique: true, // Tem que ser unico na tabela caso nao for ele vai dar erro
       },
-      password_hash: { // password criptografado
+      password: { 
         type:Sequelize.STRING, 
         allowNull: false,
       },
@@ -40,11 +41,7 @@ module.exports = {
      })
   },
   async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.dropTable('users');
+     
   }
 };

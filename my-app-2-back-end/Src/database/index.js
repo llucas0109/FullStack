@@ -3,6 +3,7 @@
 import Sequelize from 'sequelize';
 import User from '../App/Models/User.js';
 import conflog from '../../config/config.json' assert{type:'json'}
+//import Product from '../App/Models/Products.js';
 
   //fetch('../../config/config.json').then((response) => console.log(response)) //.then(response => response.json()) Assim que os dados 
 
@@ -15,7 +16,6 @@ import conflog from '../../config/config.json' assert{type:'json'}
   
     init() {
       this.connection = new Sequelize(conflog);
-      console.log(this.connection);
       models.map((model) => model.init(this.connection));
     }
   }
