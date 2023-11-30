@@ -31,7 +31,7 @@ class Usercontroller {
   // 'try catch' try Conssegue pegar o erro e enviar como propriedade do catch.  
   try{ 
     // abortEarly: false  faz aparecer todos os erros invez de somente um
-    await schena.validateSync(request.body,{ abortEarly: false }) // ve se é valido e se nao for dá como return um erro
+    await schena.validateSync(request.body,{ abortEarly: false }) // 'schena.validateSync' ve se é valido e se nao for dá como returna os erros que aparareceram
   } 
   catch(err){
     return response.status(400).json({error: err.errors})
@@ -48,7 +48,7 @@ class Usercontroller {
     return response.status(400).json({ error: "User already exists" })
   }
 
-  const user = await User.create({
+  const user = await User.create({ // create' Cria os dados se condizerem...
     id:v4(),
     name,
     email,

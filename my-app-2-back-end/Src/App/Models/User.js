@@ -24,7 +24,8 @@ class User extends Model { // Extends Model Faz com quee User tenha como usar os
       //modelName: 'user',
       //freezeTableName: true,
     })
-    // 'this.addHook' conseque tabela inteira das migration. Ele esta pegando as informaçoes e passando para seu segundo parametro. 
+    // 'this.addHook' conseque tabela inteira das migration. Ele esta pegando as informaçoes e passando para sua segnda Propriedade. 
+    // beforeSave é um tipo de dado
     this.addHook('beforeSave', async(user) => { // addHook executa coisas antes ou depois de gravar os dados no banco de dados 
       if(user.password){
         user.password_hash = await bcrypt.hash(user.password, 10 )  // hash( OqueQuerCriptografar, ONivelDeCriPtografia 0 To 150 ) 

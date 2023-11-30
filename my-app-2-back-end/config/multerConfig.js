@@ -7,7 +7,6 @@ import { request } from "http";
 // Dentro de um modulo ES voce nao pode usar __Dirname Entao vamos replicar a funcionalidade
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 const __filename = fileURLToPath(import.meta.url); // Replicando funcionalidade do dirname para um modulo
 const __dirname = path.dirname(__filename);  // Replicando funcionalidade do dirname para um modulo
 

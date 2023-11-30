@@ -18,6 +18,6 @@ rota.post('/sessions', SessionController.store)
 
 rota.post('/products', upload.single('file'), ProductControllers.store)  // upload.single('file') |Um arquivo com nome do campo que envia como file
 
-//rota.get('/products', ProductControllers.index)
+rota.get('/products', ProductControllers.index)
 
 export default rota

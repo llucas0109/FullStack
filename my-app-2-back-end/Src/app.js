@@ -4,7 +4,7 @@
 //import './database/index.js';
 import express from 'express';
 import './database/index.js'; 
-import path from 'path';
+import path, { resolve } from 'path';
 import rota from './route.js'; 
 import { fileURLToPath } from 'url';
 
@@ -20,7 +20,7 @@ class App{
   } 
   middleware() {
     this.app.use(express.json()) 
-   // this.app.use('/product-file', express.static(__dirname, '..', 'uploads',)) // Permite que ao acessar a rota ele possa ter acesso aos arquivos estaticos da aplicaçao E procure pelo arquivo .  
+    this.app.use('/product-file', express.static(resolve(__dirname, '..', 'uploads',))) // express.static Cria uma rota Web, resolve indica a pasta. E /product-file da o nome da url para acessar a pasta com os arquivos de imagen por ex
   }
   route(){
     this.app.use(rota) 

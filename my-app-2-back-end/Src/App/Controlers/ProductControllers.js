@@ -29,11 +29,11 @@ class ProductsControllers {
 
       return response.json(products)
   }
-  // async index(request,response){
-  //   const products = await Product.findAll()
-  //   return response.json(products)
+  async index(request,response){
+    const products = await Product.findAll() // findAll Procura e lista todos os itens da lista
+    return response.json(products)
   }
-//}
+}
 
 export default new ProductsControllers()
 
