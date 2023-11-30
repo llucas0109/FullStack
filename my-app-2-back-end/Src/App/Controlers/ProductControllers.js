@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-//import Product from '../Models/Products.js'
+import Product from '../Models/Products.js'
 
 class ProductsControllers {
   async store(request,response){
@@ -15,17 +15,19 @@ class ProductsControllers {
       return response.status(400).json({error: err.errors})
     }
     //  filename È  basicamente o nome do arquivo
-    //  const { filename:path } = request.file // Pega o arquivo com nome do campo de file e ´pega um sub dado Chamado filename e muda o nome para path . 
-    // const { name, price, category } = request.body
+    const { filename:path } = request.file // Pega o arquivo com nome do campo de file e ´pega um sub dado Chamado filename e muda o nome para path .
+      // const file = request.file
+      // console.log(file); 
+    const { name, price, category } = request.body
 
-    // const products = await Product.create({
-    //   name,
-    //   price,
-    //   category,
-    //   path,
-    // })
+    const products = await Product.create({
+      name,
+      price,
+      category,
+      path,
+    })
 
-      return response.json({ok: true})
+      return response.json(products)
   }
   // async index(request,response){
   //   const products = await Product.findAll()

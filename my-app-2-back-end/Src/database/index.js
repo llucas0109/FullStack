@@ -3,11 +3,11 @@
 import Sequelize from 'sequelize';
 import User from '../App/Models/User.js';
 import conflog from '../../config/config.json' assert{type:'json'}
-//import Product from '../App/Models/Products.js';
+import Product from '../App/Models/Products.js';
 
   //fetch('../../config/config.json').then((response) => console.log(response)) //.then(response => response.json()) Assim que os dados 
 
-  const models = [User];
+  const models = [User, Product];
 
   class Database {
     constructor() {
