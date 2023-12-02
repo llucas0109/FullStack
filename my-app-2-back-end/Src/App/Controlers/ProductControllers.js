@@ -31,6 +31,7 @@ class ProductsControllers {
   }
   async index(request,response){
     const products = await Product.findAll() // findAll Procura e lista todos os itens da lista
+    console.log(request.userId)
     return response.json(products)
   }
 }

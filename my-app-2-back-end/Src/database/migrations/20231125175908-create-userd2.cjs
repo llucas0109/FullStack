@@ -40,7 +40,7 @@ module.exports = {
       },
      })
   },
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) { // o metodo dow deve ser o contrario do up
     await queryInterface.dropTable('users');
      
   }

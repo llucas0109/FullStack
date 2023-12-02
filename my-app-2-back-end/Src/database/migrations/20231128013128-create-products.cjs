@@ -1,31 +1,29 @@
 'use strict';
 
-const sequelize = require('sequelize');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('products', { 
       id: {
-        type: sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
-        autoIncrement: true,
+        autoIncrement:true,
         primaryKey: true,
       },
       name: {
-        type: sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       price: {
-        type: sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       category: {
-        type: sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       path: {
-        type: sequelize.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       created_at: { // Marca O dia hora minuto segundo de quando foi criado

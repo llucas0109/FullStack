@@ -8,7 +8,6 @@ class Product extends Model{
       // Todo da ves que for querer gravar devo mandar os seguintes dados nos seguintes formatos exeto virtual
       name: Sequelize.STRING, 
       price: Sequelize.INTEGER,
-      category: Sequelize.STRING,
       path: Sequelize.STRING, // o path tem o nome do arquivo de imagem
       url: { // Os metodos virtuais nao sao gravados no banco de dados so aparecem quando chamaos a lista.
         type: Sequelize.VIRTUAL, // Os metodos virtuais nao sao gravados no banco de dados so aparecem quando chamaos a lista.
@@ -20,6 +19,11 @@ class Product extends Model{
     },{
       sequelize,
     })
+    return this
+  }
+  static associate(models){
+    // foreignkey = migration que relaciona no nosso caso products a category.
+    this.belongsTo(models.Category, { foreignKey: 'category-id', as: 'category' }) // diz que esse modulo pertence ao campo category-id do Model category.
   }
 }
 
