@@ -23,7 +23,7 @@ class Product extends Model{
   }
   static associate(models){
     // foreignkey = migration que relaciona no nosso caso products a category.
-    this.belongsTo(models.Category, { foreignKey: 'category-id', as: 'category' }) // diz que esse modulo pertence ao campo category-id do Model category.
+    this.belongsTo(models.Category, { foreignKey: 'category_id', as: 'category' }) // diz que esse modulo pertence ao campo category-id do Model category.
   }
 }
 
