@@ -9,6 +9,7 @@ class Product extends Model{
       name: Sequelize.STRING, 
       price: Sequelize.INTEGER,
       path: Sequelize.STRING, // o path tem o nome do arquivo de imagem
+      offer: Sequelize.BOOLEAN,
       url: { // Os metodos virtuais nao sao gravados no banco de dados so aparecem quando chamaos a lista.
         type: Sequelize.VIRTUAL, // Os metodos virtuais nao sao gravados no banco de dados so aparecem quando chamaos a lista.
         get(){
@@ -21,7 +22,7 @@ class Product extends Model{
     })
     return this
   }
-  static associate(models){
+  static associate(models){  // Vai criar um campo
     // foreignkey = migration que relaciona no nosso caso products a category.
     this.belongsTo(models.Category, { foreignKey: 'category_id', as: 'category' }) // diz que esse modulo pertence ao campo category-id do Model category.
   }

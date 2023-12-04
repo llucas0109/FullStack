@@ -16,7 +16,8 @@ export default (request, response, next) => {
       if(err){
         throw new Error() // ele joga automaticamente para o cath
       }
-      request.userId = decoded.id
+      request.userId = decoded.id  // toda request de toda a aplicaçao nao impotando de qual arquivo, contera essas informaçoes.
+      request.userName = decoded.name // toda request de toda a aplicaçao nao impotando de qual arquivo, contera essas informaçoes.
       console.log(decoded)
       
     })

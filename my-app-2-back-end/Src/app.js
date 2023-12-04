@@ -21,6 +21,7 @@ class App{
   middleware() {
     this.app.use(express.json()) 
     this.app.use('/product-file', express.static(resolve(__dirname, '..', 'uploads',))) // express.static Cria uma rota Web, resolve indica a pasta. E /product-file da o nome da url para acessar a pasta com os arquivos de imagen por ex
+    this.app.use('/category-file', express.static(resolve(__dirname, '..', 'uploads',)))
   }
   route(){
     this.app.use(rota) 
