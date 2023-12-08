@@ -2,11 +2,12 @@
 import App from "./Src/app.js";
 import hiau from "./Delete.js";
 //const { App } = require('./Src/app.js'); 
+const port = 3001
 const AppInstanciado = App ;
 const apl = AppInstanciado.app // Pega 'this.app' do App() 
 console.log('index1');
-apl.listen(3000, () => {
-  console.log(`Servidor rodando na porta ${3000}`);
+apl.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
 hiau(false) // or true
 //  "type":"module",   precisa ser usado no pack.json
