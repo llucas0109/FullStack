@@ -7,6 +7,7 @@ import './database/index.js';
 import path, { resolve } from 'path';
 import rota from './route.js'; 
 import { fileURLToPath } from 'url';
+import cors from 'cors'
 
 const __filename = fileURLToPath(import.meta.url); // Replicando funcionalidade do dirname para um modulo
 const __dirname = path.dirname(__filename);  // Replicando funcionalidade do dirname para um modulo
@@ -15,6 +16,7 @@ const __dirname = path.dirname(__filename);  // Replicando funcionalidade do dir
 class App{ 
   constructor(){
     this.app = express()
+    this.app.use(cors())
     this.middleware()
     this.route()
   } 

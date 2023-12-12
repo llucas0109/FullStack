@@ -12,6 +12,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #fff;
 `;
 
 export const LoginImage = styled.div`
@@ -56,11 +57,12 @@ export const Input = styled.input`
    : 'none') // caso Encontre algum tipo de erro sera true entao alteramos as configuraçoes se nao,nao.
   };
   padding-left: 10px;
+  
 `;
 
 export const Button = styled(ConteinerButton)`  // styled(ConteinerButton) Estende o estilo de ConteinerButton
-  margin-top: 75px;
-  margin-bottom: 25px;
+  /* margin-top: 75px;
+  margin-bottom: 25px; */
 `;
 
 export const SignInLink = styled.p`

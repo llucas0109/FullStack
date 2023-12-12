@@ -1,5 +1,7 @@
 import axios from "axios";
 
-export const apiPierBurguer = axios.create({
-  baseURL:'http://localhost:3001'
+const apiPierBurguer = axios.create({ // cria uma nova instancia de configuraçoes personalizaveis.
+  baseURL:'http://localhost:3001'  // url que o axios se conectara 
 })
+
+export default apiPierBurguer
