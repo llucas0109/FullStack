@@ -17,7 +17,7 @@ class ProductsControllers {
     } catch(err) {
       return response.status(400).json({error: err.errors})
     }
-    
+     
     const { admin : isAdmin} = await User.findByPk(request.userId)  // 'findByPk(request.userId)' 
 
     if(!isAdmin){
@@ -28,7 +28,7 @@ class ProductsControllers {
       // const file = request.file
       // console.log(file); 
     const { name, price, category_id, offer } = request.body
-
+     
     const products = await Product.create({
       name,
       price,
@@ -36,8 +36,8 @@ class ProductsControllers {
       path,
       offer,
     })
-
-      return response.json(products)
+    console.log("Aqui Products",products);
+    return response.json(products)
   }
   async index(request,response){
     const products = await Product.findAll({

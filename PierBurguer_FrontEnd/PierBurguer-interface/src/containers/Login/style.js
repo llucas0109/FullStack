@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const LoginImage = styled.div`
   width: 400px;
   height: 400px;
-  background: url('${LoginImg}');
+  background: url('${LoginImg}'); 
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -52,7 +52,7 @@ export const Input = styled.input`
   box-shadow: 3px 3px 10px rgba(74, 144, 226, 0.19);
   border-radius: 5px;
   outline: none;
-  border: ${ (props => props.error? '2px solid red'
+  border: ${(props => props.error? '2px solid red' //Recebendo o Atributo 'erro'(Que Foi inventado) do input
    : 'none') // caso Encontre algum tipo de erro sera true entao alteramos as configuraçoes se nao,nao.
   };
   padding-left: 10px;

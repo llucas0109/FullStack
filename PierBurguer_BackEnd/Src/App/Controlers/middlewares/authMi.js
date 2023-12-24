@@ -3,8 +3,8 @@ import Jwt from "jsonwebtoken";
 import auth from "../../../../config/auth.js";
 
 export default (request, response, next) => {
-  const authToken = request.headers.authorization
-  console.log(authToken)
+  const authToken = request.headers.authorization // Pega o token
+  console.log("Token Chegou:",authToken)
   if(!authToken){
     return response.status(401).json({  error: "token not provided"  })
   }

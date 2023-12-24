@@ -39,13 +39,13 @@ class Usercontroller {
 
   const {  name, password, email, admin } = request.body
 
-  const userExist = await User.findOne({ // findOne vai retprnar true ou false
+  const userExist = await User.findOne({ // findOne vai retornar true ou false
     where: { email }, // 'where:{}' Determina o que deve procurar
   })
   
   // Quase tenhamos algum tipo de dado negativo(null undefined etc) ele nao entra e se tiver qualquer um dos tipos de dados positivo ele entra no if.
   if(userExist){
-    return response.status(400).json({ error: "User already exists" })
+    return response.status(409).json({ error: "User already exists" })
   }
 
   const user = await User.create({ // create' Cria os dados se condizerem...

@@ -13,10 +13,10 @@ class Product extends Model{
       url: { // Os metodos virtuais nao sao gravados no banco de dados so aparecem quando chamaos a lista.
         type: Sequelize.VIRTUAL, // Os metodos virtuais nao sao gravados no banco de dados so aparecem quando chamaos a lista.
         get(){
-          return `http://localhost:3000/product-file/${this.path}`
+          return `http://localhost:3001/product-file/${this.path}`
         }
       }
-
+  
     },{
       sequelize,
     })
@@ -28,4 +28,4 @@ class Product extends Model{
   }
 }
 
-export default Product
+export default Product 

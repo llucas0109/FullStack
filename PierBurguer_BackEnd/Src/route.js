@@ -21,7 +21,9 @@ rota.post('/sessions', SessionController.store)
 
 rota.use(authMiddlewares) // Sera chamado por todas as rotas abaixo
 
-rota.post('/products', upload.single('file'), ProductControllers.store)  // upload.single('file') |Um arquivo com nome do campo que envia como file
+// upload.single('file') |Um arquivo com nome do campo que envia como file
+rota.post('/products', upload.single('file'), ProductControllers.store)  //  upload.single('file') Pega a imagem que È inviada.
+
 rota.get('/products', ProductControllers.index)
 rota.put('/products/:id', upload.single('file'), ProductControllers.update)
 

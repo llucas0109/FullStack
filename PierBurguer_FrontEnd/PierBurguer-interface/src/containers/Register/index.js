@@ -2,7 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup'
 import api from "../../services/api.js";
+import { Link } from "react-router-dom";
 import { useState,useRef } from "react";
+import { toast } from "react-toastify";
 // import { yupResolver } from "@hookform/resolvers/yup"
 
 import {
@@ -43,13 +45,24 @@ function Register(){
   } = useForm()
 
   const HandleonSubmitData = async clientData => { // clientData Esta recebendo os Dados dos Campos de input
-    console.log(clientData);
-    const response = await api.post('users',{  // api.post(pastaCaminhoUrl,DadosQueSeramEnviados) Faz o envio dos dados para o back end Passando Um 'corpo',body,{}.
+    try{ 
+      const { status } = await api.post('users',{  // api.post(pastaCaminhoUrl,DadosQueSeramEnviados) Faz o envio dos dados para o back end Passando Um 'corpo',body,{}.
       name: clientData.name,
       email: clientData.email,
       password: clientData.password
-    })
-  }
+    }, { validateStatus: () => true }
+    )
+    if (status ===201 || status ===200) {
+      toast.success('Cadastro criado com sucesso')
+      } else if (status === 409) {
+      toast.error('E-mail ja cadastrado! Faça login para continuar')
+      } else {
+      throw new Error()
+      }
+    }catch(err){
+      toast.error('Falha no sistema! Tente novamente' )
+    }
+  }  
   const spanconfirmPassword = useRef()
   const spanpassword = useRef()
   function validate(){
@@ -105,7 +118,7 @@ function Register(){
           <Button type="submit" > Sign Up </ Button>  {/* type="submit"  por estar dentro do formulario vai submeter os dados */}
         </form>
         <SignInLink>
-        Já possui conta ? <a>SignIn</a>
+        Já possui conta ? <Link style={{color:'#fff'}} to="/login">SignIn</Link>
         </SignInLink>
       </ ContainerItens>
     </ Container>

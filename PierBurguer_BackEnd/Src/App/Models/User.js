@@ -33,8 +33,9 @@ class User extends Model { // Extends Model Faz com quee User tenha como usar os
     }) 
     
   }
-   checkPassword(password){
-    return bcrypt.compare(password, this.password_hash) //  Compara se as duas senhas sejam as mesmas ele me retorna um true
+   checkPassword(password){ 
+    return bcrypt.compare(password, this.password_hash) //  Compara se as duas senhas sejam as mesmas ele me retorna um true   
+    
   } 
 }
 

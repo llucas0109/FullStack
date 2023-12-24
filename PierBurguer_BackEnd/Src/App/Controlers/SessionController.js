@@ -10,25 +10,27 @@ class SessionController {
       email: yup.string().email().required(),
       password: yup.string().required(),
     })
-
+    
     const ifEmailOrPasswordNotExist = () => {
-      return response.status(400).json({ error: "error make sure that your password or email are correct" })
+      return response.status(401).json({ error: "error make sure that your password or email are correct" })
     }
 
     if(!(await schema.isValid(request.body))){
-      ifEmailOrPasswordNotExist()
+      return ifEmailOrPasswordNotExist()
     }
+    
     const { email,password } = request.body
 
     const user = await User.findOne({ //  retorna true ou false mas tbm o modelo inteiro como segundario
       where: { email },
     })
+ 
     if(!user) {
-      ifEmailOrPasswordNotExist()
+      return ifEmailOrPasswordNotExist()
     }
 
     if(!(await user.checkPassword(password))) {
-      ifEmailOrPasswordNotExist()
+      return ifEmailOrPasswordNotExist()
     }
 
     return response.status(200).json({
@@ -37,12 +39,10 @@ class SessionController {
     name: user.name,
     admin: user.admin,
     // Jwt.sign  cria o token com base nas suas duas propries. esse token conten dados recuperaveis.
-    token: Jwt.sign({ id: user.id, name: user.name }, auth.secret, { // Primeiro prop é um id o segundo um nome bem aleatorio
+    token: Jwt.sign({ id: user.id, name: user.name }, auth.secret, { // Primeiro prop é um id o segundo um nome bem aleatorio que  criamos.
       expiresIn: auth.expiresIn // Tempo para ser inspirado o token
      })
     })
   }
-   
 }
-
 export default new SessionController()

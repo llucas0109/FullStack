@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url); // Replicando funcionalidade 
 const __dirname = path.dirname(__filename);  // Replicando funcionalidade do dirname para um modulo
 
 export default {
-  storage: multer.diskStorage({
+  storage: multer.diskStorage({  // Acho que diskStoraage pega a imagem do servidor e guarda numa pasta 
     destination: resolve(__dirname, '..', 'uploads'), // arquivo destino
     filename: (request, file, callback) => { // file = é o nome do campo que vai mandar o arquivo. callback Vai dar um nome ao arquivo.
      return callback(null, v4() + extname(file.originalname)) // dando nome do aqrquivo que vai ser feito upload. 'extname(file.originalname' = Vai ser o tipo original do arquivo .png ,jpeg etc .  null seria que nao tem erros

@@ -9,13 +9,13 @@ class CategorysControllers {
     })
 
     try{
-      await schema.validateSync(request.body), { abortEarly: false }  // abortEarly: false diz que ele deve acular todos os erros
+      await schema.validateSync(request.body), { abortEarly: false }  // abortEarly: false diz que ele deve acumular todos os erros
     } catch(err) {
       return response.status(400).json({error: err.errors})
     }
     // filename È  basicamente o nome do arquivo
     
-    const { admin : isAdmin} = await User.findByPk(request.userId)  // 'findByPk(request.userId)' 
+    const { admin : isAdmin} = await User.findByPk(request.userId)  // 'findByPk(request.userId)' encontra o user pelo id
 
    if(!isAdmin){
     return response.status(401).json()
@@ -23,7 +23,7 @@ class CategorysControllers {
 
     const { name } = request.body
 
-    const { filename:path } = request.file
+    const { filename:path } = request.file // recebendo o arquivo file
 
      const categoryExist = await Category.findOne({
       where: {
