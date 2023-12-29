@@ -8,13 +8,14 @@ import PropTypes from 'prop-types'
 
  export const UserProvider = ({ children }) => {
   const [userData, setuserData] = useState({})
-
+  
   const putUserData = async userInfo => {
+    
     setuserData(userInfo)
     // JSON.stringify(userInfo) Tranforma o objeto em string
     await localStorage.setItem('NomeDaMykay:paraidentificar', JSON.stringify(userInfo))  // localStorage.setItem Guarda os itens no chorme.
   }
-
+  
   const Logout = async () => {
   await localStorage.removeItem( 'NomeDaMykay:paraidentificar' )
  }
@@ -31,12 +32,14 @@ import PropTypes from 'prop-types'
     loadUserData()
 
   },[])
+  
 
   return (
      <UserContext.Provider value={{userData,putUserData,Logout}}>  { /* Adicionando 'user' e 'otheruser' ao contexto*/}
       {children}
     </UserContext.Provider>
   )
+  
 }
 
 export const useUser = () => {

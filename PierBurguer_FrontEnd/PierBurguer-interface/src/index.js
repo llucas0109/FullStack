@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import  AppProvider  from './hooks/index.js'; // Providers no topo sempre
 // 'createBrowserRouter' Atualiza a rota. 
 import {BrowserRouter as Router} from 'react-router-dom'; // DeveMos Envelopar O arquivo de rotas Com browser para funcionar as rotas.
 import RouterPag from './router/router.js';
 import Global from  './styles/globalStyles.js';  // O nome Deve Ter A primeira Letra em maiuculo quanto é envolvido com styled 
 import { ToastContainer } from 'react-toastify'; // estilo de toast
-import  AppProvider  from './hooks/index.js';
+import Home from './containers/Home/index.js';
+
+import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 import { register } from 'swiper/element/bundle'; //Estrutura base do swiper carrousel
 import 'swiper/css'; //Estrutura base do swiper carrousel
 import 'swiper/css/navigation'; //Etrutura base do swiper carrousel
@@ -20,9 +23,10 @@ root.render(
     <Global />
     <ToastContainer />
     <AppProvider> {/*Envelopando os modulos que poderam usar os dados Do context*/}
-    <Router>
+    {/* <Router>
       <RouterPag />
-    </Router>
+    </Router> */}
+    <RouterProvider router = {RouterPag()}/>
     </AppProvider>
   </React.StrictMode>
 );

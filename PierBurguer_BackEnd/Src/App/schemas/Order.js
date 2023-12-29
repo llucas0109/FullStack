@@ -1,3 +1,4 @@
+// Esse é um outro tipo de banco de dados nao relacional.
 import mongoose from 'mongoose';
 import { string } from 'yup';
 

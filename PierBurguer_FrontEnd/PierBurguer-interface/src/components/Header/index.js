@@ -22,7 +22,7 @@ const Header = () => {
   return(
     <Container>
         <ContainerLeft>
-          <PageLink onClick={ () => { navigate('/home') }} $isActive={location.pathname == '/home'}>Home</ PageLink>
+          <PageLink onClick={ () => { navigate('/') }} $isActive={location.pathname == '/'}>Home</ PageLink>
            <PageLink onClick={ () => { navigate('/products') }} $isActive={location.pathname == '/products'}>Ver Produtos</ PageLink>    {/*  'includes' È uma funçao nativa do javascript usada para encontrar algo espefico  */}
         </ContainerLeft>
 

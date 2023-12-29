@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup'
 import api from "../../services/api.js";
-import { Link,useNavigate } from "react-router-dom";  // 'Link'  permite Criar como se fosse uma ancora para uma outra pagina
+import { Link,useNavigate, Navigate } from "react-router-dom";  // 'Link'  permite Criar como se fosse uma ancora para uma outra pagina
 import { toast } from 'react-toastify'; 
 import { useUser } from "../../hooks/UserContext.js";  // Pega os context
 
@@ -18,8 +18,7 @@ import {
 } from './style.js'
 
 function Login(){
-  const navegate = useNavigate()
-  const {putUserData} = useUser()
+  const {putUserData,userData} = useUser()
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -34,38 +33,41 @@ function Login(){
   } = useForm()
 
   const onSubmit = async clientData => {
-    try{ 
-      const response = await api.post('sessions',{  // api.post(pastaCaminhoUrl,DadosQueSeramEnviados) Faz o envio dos dados para o back end pelo metodo post.
-        email: clientData.email,
-        password: clientData.password
-      },
-      { validateStatus: () => true }) // 'validateStatus: () => true' PerMite Que caso de erro ele Continue a ler o try
-
-      const { data } = response
-      putUserData(data)
-
-    }catch(err){
-      toast.error('Toustadi', { // toast.error() Mostra um toast de estilo 
-        position: "top-right",
-        autoClose: 2000, // 2 segundos para ate fechar
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
-      
+    
+  
+    const response = await api.post('sessions',{  // api.post(pastaCaminhoUrl,DadosQueSeramEnviados) Faz o envio dos dados para o back end pelo metodo post.
+      email: clientData.email,
+      password: clientData.password
+    },{ validateStatus: () => true }) // 'validateStatus: () => true' PerMite Que caso de erro ele Continue a ler o try
+  
+    const { data } = response
+    putUserData(data)
+    const valid = data.admin
+    if(valid == true){
+      return window.location.href = '/admin';
+    }if(valid == false){
+      return window.location.href = '/home';
     }
-
-    setTimeout(() => {  // Determina um tempo de espera ate executar algo.  se tivesse algo a baixo de setTimeout ele exucutaria primeiro. 
-      navegate('/')
-    }, 1000);
     
+  
+    // toast.error('error', { // toast.error() Mostra um toast de estilo 
+    //   position: "top-right",
+    //   autoClose: 2000, // 2 segundos para ate fechar
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: "light",
+    //   });
+      
     
+   
+ 
   }
   
-  
+ 
+
   return (
     <Container>
       <LoginImage>

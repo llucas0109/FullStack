@@ -10,6 +10,7 @@ export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState([]) // useState é Asincrono ou seja pode acontecer de ele continuar o codigo sem nescessariamente alterar o estado de si.
 
   const updateLocalStorage = async products => {
+    
     await localStorage.setItem('NomeDaMykay:CartInfo', JSON.stringify(products))
   }
   

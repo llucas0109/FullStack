@@ -7,7 +7,6 @@ import { Img, H1, Container, CategoryImg,Namedowcategory,Button} from './style.j
 
 function ImagensCarrosel(){
 
-
   const [categories,setcategories] = useState([])
 
   useEffect(() => {
