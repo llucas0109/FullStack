@@ -6,18 +6,12 @@ import PropTypes from 'prop-types'
 
 
 export const PrivateRoute = () => {
-
  const user = JSON.parse(localStorage.getItem( 'NomeDaMykay:paraidentificar'))
-
- 
-
  if(user && user.admin){
   return true
  }
-
   return false 
 }
-
 
 PrivateRoute.propTypes = {
 component: PropTypes.oneOfType( [PropTypes.func, PropTypes.element]),
@@ -29,6 +23,5 @@ export const Root = () => {
   if(user){
   return true
   }
-
     return false
 }

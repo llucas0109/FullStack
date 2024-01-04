@@ -7,7 +7,7 @@ import Hamburheand from '../../assets/img 1 1.png'
 import Header from "../../components/Header/index.js"
 
 const Home = () => {
-
+  
   return(
     <>
     <Header />

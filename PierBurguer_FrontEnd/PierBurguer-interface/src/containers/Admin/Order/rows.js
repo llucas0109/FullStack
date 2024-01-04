@@ -24,7 +24,7 @@ import { Container,Img,ReactSelectStyled } from "./style.js";
 import React, { useEffect } from "react";
 
 
-function Row({row}){
+function Row({row,setOrders,orders}){
   const [open, setOpen] = React.useState(false);
   const [isLoading,setisLoading] = React.useState(false)  // React.useState é Usado para desestruturar o usestate sem precisar declarar em import.
 
@@ -32,6 +32,10 @@ function Row({row}){
     setisLoading(true)
     try{
       await apiPierBurguer.put(`/orders/${id}`, { status } )
+      const newOrder = orders.map(order => {
+        return order._id === id ? { ...order, status } : order
+      })
+      setOrders(newOrder) // Atualizando Dados do array que que esta em outro arquivo. 
     }catch(err){
       console.log(err);
     }finally{ // depois do catch ou try ele cai aqui
@@ -58,7 +62,7 @@ function Row({row}){
         <TableCell>{moment(row.date).format('do MMMM YYYY h:mm:ss') }</TableCell>
         <TableCell>
           <ReactSelectStyled 
-          options={status}
+          options={status.filter(sts => sts.value !== 'Todos')}
           menuPortalTarget={document.body} 
           placeholder='Status'
           defaultValue={status.find(option => option.value === row.status) || null} 
@@ -108,6 +112,8 @@ function Row({row}){
 }
 
 Row.propTypes = {
+  orders: PropTypes.array,
+  setOrders: PropTypes.func,
   row: PropTypes.shape({
     name: PropTypes.string.isRequired,
     orderId: PropTypes.string.isRequired,

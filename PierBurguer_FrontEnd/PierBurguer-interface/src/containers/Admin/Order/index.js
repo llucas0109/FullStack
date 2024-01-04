@@ -21,14 +21,16 @@ import status from './order-status.js';
 
 function Orders(){
   const [orders,setOrders] = useState([])
+  const [activeStatus,setactiveStatus] = useState(1)
   const [Filterorders,setFilterOrders] = useState([])
   const [rows,setRows] = useState([])
 
   useEffect(() => {
     async function loadOrders() {
       const { data } = await apiPierBurguer.get('orders')
-      setOrders(data) // Atualizando o useState
 
+      setOrders(data) 
+      setFilterOrders(data)
     }
 
     loadOrders() // Chamando a funçao para q ela possa ser executado
@@ -47,27 +49,42 @@ function Orders(){
   }
 
   useEffect(() => {
-    const newRows = orders.map(ord => createData(ord))
+    const newRows = Filterorders.map(ord => createData(ord))
     setRows(newRows)
+  },[Filterorders])
+
+  useEffect(() => {
+    if(activeStatus === 1){
+      setFilterOrders(orders)
+    }else{ 
+    const statusIndex = status.findIndex(sts => sts.id === activeStatus)
+    const newFilterOrders = orders.filter( order => order.status === status[statusIndex].value )
+
+    setFilterOrders(newFilterOrders)
+    }
   },[orders])
 
   function handleStatus(status){
     if(status.id === 1){
       setFilterOrders(orders)
+      
     }else{
       const newOrders = orders.filter(order => order.status === status.value )
       setFilterOrders(newOrders)
     }
 
+    setactiveStatus(status.id)
   }
 
   return(
     <Container>
       <Menu>
         {status && status.map(status => (
-          <LinkMenu onClick={() => handleStatus(status)} >
-          {status.label}
-        </LinkMenu>
+          <LinkMenu key={status.id}
+           onClick={() => handleStatus(status)} 
+           $isActiveStatus={activeStatus === status.id} >
+           {status.value}
+          </LinkMenu>
         ))}
       </Menu>
       <TableContainer component={Paper}>
@@ -83,7 +100,7 @@ function Orders(){
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <Row key={row.orderId} row={row} />
+               <Row key={row.orderId} row={row} setOrders={setOrders} orders={orders}/>  // Quando declaramos algum atributo em uma tag Ela é passada para o modulo de origem dela no caso './rows.js', assim podemos usar em rows os dados enviados aqui 
             ))}
           </TableBody>
         </Table>

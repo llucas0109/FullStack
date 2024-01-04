@@ -24,9 +24,11 @@ class ProductsControllers {
      return response.status(401).json()
     }
     //  filename È  basicamente o nome do arquivo
-    const { filename:path } = request.file // Pega o arquivo com nome do campo de file e ´pega um sub dado Chamado filename e muda o nome para path .
-      // const file = request.file
+    console.log("O File Chegou",request.file); 
+    const { filename:path } = request.file // Pega o name e muda o nome para path. 
+      // const file = request.file 
       // console.log(file); 
+      console.log("O path",path); 
     const { name, price, category_id, offer } = request.body
      
     const products = await Product.create({
@@ -65,12 +67,12 @@ class ProductsControllers {
       return response.status(400).json({error: err.errors})
     }
     
-    const { admin : isAdmin} = await User.findByPk(request.userId)  // 'findByPk(request.userId)' 
+    const { admin : isAdmin} = await User.findByPk(request.userId)  // 'findByPk(request.userId)'  
 
     if(!isAdmin){
      return response.status(401).json()
     }
-
+ 
     const { id } = request.params
 
     const product = await Product.findByPk(id)

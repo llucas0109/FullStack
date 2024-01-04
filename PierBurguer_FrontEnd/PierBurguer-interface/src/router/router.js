@@ -24,9 +24,8 @@ import {  // 'Routes' Substituiu o switch
 
 function RouterPag () {
   // const {userData} = useUser()
-  
-  const router = createBrowserRouter([
-    
+
+  const router = createBrowserRouter([  
     { 
     path: "/login",
     element: <Login />,
@@ -54,6 +53,22 @@ function RouterPag () {
     { 
     path: "/admin",
     element: PrivateRoute() ? <Admin /> : <Navigate to="/home" />,
+    },
+    { 
+    path: "/pedidos",
+    element: PrivateRoute() ? <Admin Atr="/pedidos" /> : <Navigate to="/home" />,
+    },
+    { 
+    path: "/listar-pedidos",
+    element: PrivateRoute() ? <Admin Atr="/listar-pedidos" /> : <Navigate to="/home" />,
+    },
+    { 
+    path: "/novo-produto",
+    element: PrivateRoute() ? <Admin Atr="/novo-produto" /> : <Navigate to="/home" />,
+    },
+    { 
+    path: "/editar-produto",
+    element: PrivateRoute() ? <Admin Atr="/editar-produto" /> : <Navigate to="/home" />,
     }
 
     ]);
